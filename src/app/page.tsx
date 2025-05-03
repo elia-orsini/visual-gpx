@@ -92,7 +92,7 @@ export default async function IndexPage() {
             {[1, 2, 3].map((item) => (
               <div key={item} className="overflow-hidden rounded-xl shadow-md">
                 <div className="relative aspect-square bg-gradient-to-tr from-gray-100 to-gray-300">
-                  <Image src={imgs[item - 1]} fill objectFit="cover" />
+                  <Image alt="" src={imgs[item - 1]} fill objectFit="cover" />
                 </div>
                 <div className="bg-white p-4">
                   <h3 className="font-medium">Morning Run • {item}0km</h3>
