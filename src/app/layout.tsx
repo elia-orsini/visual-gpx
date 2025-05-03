@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description: "Visual GPX",
   icons: { icon: "/vercel.svg" },
   openGraph: {
-    title: "Angela Ricciardi",
+    title: "Visual GPX",
     description: "Visual GPX",
     images: [
       {
