@@ -166,21 +166,24 @@ export async function POST(request: Request) {
       weight: "normal",
       style: "normal",
     });
+    registerFont(path.join(process.cwd(), "public/fonts/Arial.ttf"), {
+      family: "Arial",
+      weight: "normal",
+      style: "normal",
+    });
 
     ctx.font = "110px Hand";
     ctx.fillStyle = "white";
     ctx.textBaseline = "top";
-    ctx.fillText(distanceText, 100, 800);
+    ctx.fillText(distanceText, 100, 900);
 
-    ctx.font = "90px Hand";
-    ctx.fillText("km", 200, 920);
+    ctx.font = "80px Hand";
+    ctx.fillText("km", 190, 1020);
 
-    ctx.font = "60px Hand";
-    ctx.fillText(formattedDate, 450, 1050);
+    ctx.font = "50px Hand";
+    ctx.fillText(formattedDate, 580, 1120);
 
     ctx.font = "32px Arial";
-    ctx.fillStyle = "white";
-    ctx.textBaseline = "top";
     ctx.fillText(paceText, 10, 10);
     ctx.fillText(elevationText, 10, 50);
 
