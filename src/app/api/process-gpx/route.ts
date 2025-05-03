@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 import gpxParser from "gpxparser";
 import { Jimp } from "jimp";
-import fs from "fs";
 import { createCanvas, loadImage, registerFont } from "canvas";
 
 export const dynamic = "force-dynamic"; // Ensure this route is dynamic
@@ -74,20 +73,13 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "No track points found in GPX file" }, { status: 400 });
     }
 
-    // Process background image
-    const tempImagePath = `./${backgroundImage.name}`;
     const imageBuffer = await backgroundImage.arrayBuffer();
-    await fs.promises.writeFile(tempImagePath, Buffer.from(imageBuffer));
 
     // Load image with JIMP
-    const image = await Jimp.read(tempImagePath);
-
-    // Convert to black and white
+    const image = await Jimp.read(Buffer.from(imageBuffer));
     image.greyscale().contrast(0.3).brightness(0.6);
-
     image.cover({ w: 900, h: 1200 });
 
-    // Get image dimensions
     const { width, height } = image.bitmap;
 
     // Calculate bounds of GPX track
@@ -133,7 +125,6 @@ export async function POST(request: Request) {
       return { x, y };
     };
 
-    // Draw the GPX track
     const lineWidth = 3; // Thicker line for better visibility
 
     for (let i = 0; i < points.length - 1; i++) {
