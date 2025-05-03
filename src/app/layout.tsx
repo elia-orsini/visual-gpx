@@ -7,6 +7,18 @@ export const metadata: Metadata = {
   title: "Visual GPX",
   description: "Visual GPX",
   icons: { icon: "/vercel.svg" },
+  openGraph: {
+    title: "Angela Ricciardi",
+    description: "Visual GPX",
+    images: [
+      {
+        url: "/gpx-track2.png",
+        width: 500,
+        height: 500,
+        alt: "Visual GPX",
+      },
+    ],
+  },
 };
 
 export const viewport: Viewport = { maximumScale: 1 };
