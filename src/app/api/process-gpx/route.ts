@@ -149,11 +149,11 @@ export async function POST(request: Request) {
         function (x, y, idx) {
           const distanceToLine = distancePointToLine(x, y, start.x, start.y, end.x, end.y);
           if (distanceToLine < lineWidth) {
-            //@ts-expect-error
+            //@ts-expect-error 'this' implicitly has type 'any'
             this.bitmap.data[idx + 0] = 255; // R
-            //@ts-expect-error
+            //@ts-expect-error 'this' implicitly has type 'any'
             this.bitmap.data[idx + 1] = 255; // G
-            //@ts-expect-error
+            //@ts-expect-error 'this' implicitly has type 'any'
             this.bitmap.data[idx + 2] = 255; // B
             // Alpha remains the same
           }
