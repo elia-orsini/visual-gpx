@@ -171,10 +171,10 @@ export default function StravaActivitySelector() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-r from-zinc-950 to-zinc-800">
+    <div className="min-h-screen bg-gray-950">
       <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6 lg:px-8">
-        <div className="rounded-xl bg-zinc-300 p-6 shadow-sm sm:p-8">
-          <h1 className="mb-6 text-3xl font-bold text-gray-900">Strava Activity Visualizer</h1>
+        <div className="rounded-xl bg-gray-900 p-6 shadow-sm sm:p-8">
+          <h1 className="mb-6 text-3xl font-bold text-white">Strava Activity Visualizer</h1>
 
           {!isConnected ? (
             <div className="text-center">
@@ -221,18 +221,18 @@ export default function StravaActivitySelector() {
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* Activities List */}
               <div>
-                <label className="mb-2 block text-base font-medium text-gray-700">
+                <label className="mb-2 block text-base font-medium text-gray-200">
                   Select Activity
                 </label>
-                <div className="max-h-96 overflow-y-auto rounded-lg border border-gray-200 bg-zinc-200">
+                <div className="max-h-96 overflow-y-auto rounded-lg bg-gray-800">
                   {activities.length === 0 ? (
-                    <div className="p-4 text-center text-gray-500">
+                    <div className="p-4 text-center text-gray-200">
                       {loading ? "Loading activities..." : "No activities found"}
                     </div>
                   ) : (
                     <ul className="divide-y divide-gray-200">
                       {activities.map((activity) => (
-                        <li key={activity.id} className="p-4 hover:bg-zinc-100">
+                        <li key={activity.id} className="p-4 hover:bg-gray-700 animation-all duration-500 active:bg-lime-500">
                           <label className="flex cursor-pointer items-center">
                             <input
                               type="radio"
@@ -240,11 +240,11 @@ export default function StravaActivitySelector() {
                               value={activity.id}
                               checked={selectedActivity === String(activity.id)}
                               onChange={() => setSelectedActivity(String(activity.id))}
-                              className="h-4 w-4 text-blue-600 focus:ring-blue-500"
+                              className="h-4 w-4 text-lime-600 accent-lime-500 focus:ring-lime-50 hover:cursor-pointer"
                             />
                             <div className="ml-3">
-                              <p className="text-sm font-medium text-gray-900">{activity.name}</p>
-                              <p className="text-xs text-gray-500">
+                              <p className="text-sm font-medium text-gray-200">{activity.name}</p>
+                              <p className="text-xs text-gray-400">
                                 {new Date(activity.start_date).toLocaleString()} • {activity.type} •{" "}
                                 {(Math.floor(activity.distance / 10) / 100).toFixed(2)} km
                               </p>
@@ -259,10 +259,10 @@ export default function StravaActivitySelector() {
 
               {/* Background Image Upload */}
               <div>
-                <label className="mb-2 block text-base font-medium text-gray-700">
-                  Upload Background Image
+                <label className="mb-2 block text-base font-medium text-gray-200">
+                  Upload Image
                 </label>
-                <div className="flex items-center justify-center rounded-lg border-2 border-dashed border-gray-200 bg-zinc-200 px-6 py-10 text-center hover:border-gray-300">
+                <div className="flex items-center justify-center rounded-lg border-2 border-dashed border-gray-400 bg-gray-700 px-6 py-10 text-center hover:border-gray-500">
                   <div className="space-y-2">
                     <svg
                       className="mx-auto h-10 w-10 text-gray-400"
@@ -281,7 +281,7 @@ export default function StravaActivitySelector() {
                     <div className="flex justify-center text-sm text-gray-600">
                       <label
                         htmlFor="image-upload"
-                        className="relative cursor-pointer rounded-md font-medium text-blue-600 focus-within:outline-none hover:text-blue-500"
+                        className="relative cursor-pointer rounded-md font-medium text-lime-600 focus-within:outline-none hover:text-lime-500"
                       >
                         <span>Upload an image</span>
                         <input
@@ -295,7 +295,7 @@ export default function StravaActivitySelector() {
                         />
                       </label>
                     </div>
-                    <p className="text-xs text-gray-500">
+                    <p className="text-xs text-gray-200">
                       {backgroundImage?.name || "No file selected"}
                     </p>
                   </div>
@@ -311,7 +311,7 @@ export default function StravaActivitySelector() {
               <button
                 type="submit"
                 disabled={loading || !selectedActivity || !backgroundImage}
-                className="inline-flex w-full justify-center rounded-md border border-transparent bg-gray-900 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 disabled:opacity-50 sm:w-auto sm:text-sm"
+                className="inline-flex w-full justify-center rounded-md border border-transparent bg-lime-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-lime-500 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 disabled:opacity-50 sm:w-auto sm:text-sm"
               >
                 {loading ? (
                   <>
@@ -348,16 +348,16 @@ export default function StravaActivitySelector() {
         {resultImage && (
           <div className="mt-4 space-y-4">
             <h2 className="text-xl font-semibold text-gray-100">Result</h2>
-            <div className="rounded-lg border border-gray-200 bg-zinc-300 p-4">
+            <div className="rounded-lg border border-lime-400 bg-gray-900 p-4">
               <img
                 src={resultImage}
-                alt="GPX track on background"
-                className="mx-auto max-h-96 max-w-full object-contain"
+                alt=""
+                className="mx-auto max-h-96 max-w-full object-contain border"
               />
             </div>
             <a
               ref={downloadRef}
-              className="inline-flex items-center rounded-md border border-transparent bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+              className="inline-flex items-center rounded-md border border-transparent bg-lime-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-lime-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 hover:cursor-pointer"
             >
               Download Image
             </a>

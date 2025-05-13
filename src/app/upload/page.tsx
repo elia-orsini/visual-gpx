@@ -67,7 +67,7 @@ export default function GPXProcessor() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-r from-zinc-950 to-zinc-800">
+    <div className="min-h-screen bg-zinc-950">
       <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6 lg:px-8">
         <div className="rounded-xl bg-zinc-300 p-6 shadow-sm sm:p-8">
           <h1 className="mb-6 text-3xl font-bold text-gray-900">GPX Track Visualizer</h1>

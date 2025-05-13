@@ -7,7 +7,7 @@ export default async function IndexPage() {
   return (
     <main className="flex min-h-screen flex-col bg-white">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-zinc-950 to-zinc-800 py-24 text-white">
+      <section className="relative bg-gradient-to-br from-gray-950 to-gray-800 py-24 text-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col items-center gap-12 md:flex-row">
             <div className="md:w-1/2">
@@ -38,13 +38,13 @@ export default async function IndexPage() {
       </section>
 
       {/* Features Section */}
-      <section id="features" className="py-20">
+      <section id="features" className="py-20 bg-gradient-to-r from-gray-600 to-gray-950 border-t">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-16 text-center">
-            <h2 className="mb-4 text-3xl font-bold text-gray-900">
+            <h2 className="mb-4 text-3xl font-bold text-gray-50">
               Create Stunning Activity Visuals
             </h2>
-            <p className="mx-auto max-w-2xl text-xl text-gray-600">
+            <p className="mx-auto max-w-2xl text-xl text-gray-200">
               Multiple styles to showcase your adventures
             </p>
           </div>
@@ -64,12 +64,12 @@ export default async function IndexPage() {
               {
                 title: "Night Mode",
                 description: "Dark background with glowing route",
-                style: "bg-gradient-to-br from-gray-900 to-gray-800 text-white",
+                style: "bg-gradient-to-br from-gray-900 to-gray-800 text-white border",
               },
             ].map((feature) => (
               <div key={feature.title} className={`rounded-xl p-8 ${feature.style}`}>
                 <h3 className="mb-3 text-xl font-semibold">{feature.title}</h3>
-                <p className="text-gray-600">{feature.description}</p>
+                <p className="text-gray-500">{feature.description}</p>
               </div>
             ))}
           </div>
@@ -77,13 +77,13 @@ export default async function IndexPage() {
       </section>
 
       {/* Gallery Section */}
-      <section id="examples" className="bg-gray-50 py-20">
+      <section id="examples" className="bg-gray-950 py-20 border-y">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-12 text-center">
-            <h2 className="mb-4 text-3xl font-bold text-gray-900">
+            <h2 className="mb-4 text-3xl font-bold text-gray-50">
               Inspiration for Your Next Creation
             </h2>
-            <p className="mx-auto max-w-2xl text-xl text-gray-600">
+            <p className="mx-auto max-w-2xl text-xl text-gray-500">
               See what others have made with their activity data
             </p>
           </div>
@@ -94,7 +94,7 @@ export default async function IndexPage() {
                 <div className="relative aspect-square bg-gradient-to-tr from-gray-100 to-gray-300">
                   <Image alt="" src={imgs[item - 1]} fill objectFit="cover" />
                 </div>
-                <div className="bg-white p-4">
+                <div className="bg-gray-100 p-4">
                   <h3 className="font-medium">Morning Run • {item}0km</h3>
                   <p className="text-sm text-gray-500">By @user{item}</p>
                 </div>
@@ -105,7 +105,7 @@ export default async function IndexPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-gradient-to-r from-zinc-950 to-zinc-800 py-20 text-white">
+      <section className="bg-gradient-to-r from-gray-950 to-gray-700 py-20 text-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h2 className="mb-6 text-3xl font-bold">

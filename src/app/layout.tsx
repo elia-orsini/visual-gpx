@@ -27,15 +27,15 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en">
       <body className={`no-scrollbar overflow-x-clip antialiased`}>
-        <header className="sticky top-0 z-50 border-b border-gray-100 bg-[var(--background)]">
+        <header className="sticky top-0 z-50 border-b border-gray-100 bg-gray-950">
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             <div className="flex h-16 items-center justify-between">
               <Link href="/">
                 <div className="flex flex-row items-center">
-                  <span className="text-xl font-semibold text-[var(--foreground)]">
+                  <span className="text-xl font-semibold text-gray-50">
                     Visual GPX{" "}
                   </span>
-                  <p className="ml-2 mt-0.5 inline rounded bg-[var(--foreground)] px-2 text-sm text-[var(--background)]">
+                  <p className="ml-2 mt-0.5 inline rounded bg-gray-50 px-2 text-sm !text-gray-950 font-black">
                     BETA
                   </p>
                 </div>
@@ -43,7 +43,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
               <div className="flex items-center space-x-4">
                 <Link
                   href="/upload"
-                  className="rounded-md bg-[var(--foreground)] px-4 py-2 text-[var(--background)] transition-colors hover:bg-gray-800"
+                  className="rounded-md bg-gray-50 px-4 py-2 text-gray-700 hover:bg-lime-500 animation-all duration-500"
                 >
                   Get started
                 </Link>
@@ -55,21 +55,21 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         {children}
 
         {/* Footer */}
-        <footer className="border-t border-gray-200 bg-white py-12">
+        <footer className="border-t border-gray-200 bg-gray-950 py-12">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col items-center justify-between md:flex-row">
               <div className="mb-6 md:mb-0">
-                <h3 className="text-lg font-bold text-gray-900">Visual GPX</h3>
-                <p className="text-sm text-gray-500">Transform your adventure into art</p>
+                <h3 className="text-lg font-bold text-gray-50">Visual GPX</h3>
+                <p className="text-sm text-gray-200">Transform your adventure into art</p>
               </div>
               <div className="flex space-x-6">
-                <Link href="#" className="text-sm text-gray-500 hover:text-gray-900">
+                <Link href="#" className="text-sm text-gray-100 hover:text-gray-200">
                   About
                 </Link>
-                <Link href="#" className="text-sm text-gray-500 hover:text-gray-900">
+                <Link href="#" className="text-sm text-gray-100 hover:text-gray-200">
                   Contact
                 </Link>
-                <Link href="#" className="text-sm text-gray-500 hover:text-gray-900">
+                <Link href="#" className="text-sm text-gray-100 hover:text-gray-200">
                   Privacy
                 </Link>
               </div>
