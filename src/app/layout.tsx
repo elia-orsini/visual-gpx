@@ -60,7 +60,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             <div className="flex flex-col items-center justify-between md:flex-row">
               <div className="mb-6 md:mb-0">
                 <h3 className="text-lg font-bold text-gray-900">Visual GPX</h3>
-                <p className="text-sm text-gray-500">Transform your activity data into art</p>
+                <p className="text-sm text-gray-500">Transform your adventure into art</p>
               </div>
               <div className="flex space-x-6">
                 <Link href="#" className="text-sm text-gray-500 hover:text-gray-900">
