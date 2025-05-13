@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default async function IndexPage() {
-  const imgs = ["/gpx-track2.png", "/gpx-track3.png", "/gpx-track4.png"];
+  const imgs = ["/gpx-track-5.png", "/gpx-track-0.png", "/gpx-track-6.png"];
 
   return (
     <main className="flex min-h-screen flex-col bg-white">
@@ -26,10 +26,10 @@ export default async function IndexPage() {
                 </Link>
               </div>
             </div>
-            <div className="relative aspect-square w-full overflow-hidden rounded-xl shadow-2xl md:w-1/2">
+            <div className="relative aspect-[3/4] w-full overflow-hidden rounded-xl shadow-2xl w-4/6 sm:w-2/6 mx-auto">
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="relative h-full w-full">
-                  <Image alt="" src="/gpx-track2.png" fill objectFit="cover" />
+                  <Image alt="" src="/gpx-track-0.png" fill objectFit="cover" />
                 </div>
               </div>
             </div>
@@ -91,7 +91,7 @@ export default async function IndexPage() {
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {[1, 2, 3].map((item) => (
               <div key={item} className="overflow-hidden rounded-xl shadow-md">
-                <div className="relative aspect-square bg-gradient-to-tr from-gray-100 to-gray-300">
+                <div className="relative aspect-[3/4] bg-gradient-to-tr from-gray-100 to-gray-300">
                   <Image alt="" src={imgs[item - 1]} fill objectFit="cover" />
                 </div>
                 <div className="bg-gray-100 p-4">
