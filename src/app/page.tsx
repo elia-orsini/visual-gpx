@@ -19,7 +19,7 @@ export default async function IndexPage() {
                 cyclists, and outdoor enthusiasts.
               </p>
               <div className="flex flex-col space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
-                <Link href="/upload">
+                <Link href="/strava">
                   <button className="rounded-md bg-white px-6 py-3 font-medium text-black transition-colors hover:bg-lime-600 hover:text-white">
                     Create Your First Visualization
                   </button>
@@ -115,7 +115,7 @@ export default async function IndexPage() {
               Upload your GPX file and create beautiful posters in seconds.
             </p>
             <div className="flex justify-center gap-4">
-              <Link href="/upload">
+              <Link href="/strava">
                 <button className="rounded-md bg-white px-8 py-4 font-medium text-black transition-colors hover:bg-gray-100">
                   Get Started
                 </button>
