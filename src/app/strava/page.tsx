@@ -28,7 +28,7 @@ export default function StravaActivitySelector() {
 
   const connectToStrava = () => {
     const clientId = process.env.NEXT_PUBLIC_STRAVA_CLIENT_ID;
-    const redirectUri = `${window.location.origin}/strava`;
+    const redirectUri = `${process.env.NEXT_PUBLIC_API_URL}/strava`;
     const scope = "activity:read";
     const stravaAuthUrl = `https://www.strava.com/oauth/authorize?client_id=${clientId}&response_type=code&redirect_uri=${redirectUri}&approval_prompt=auto&scope=${scope}`;
 
@@ -230,7 +230,10 @@ export default function StravaActivitySelector() {
                   ) : (
                     <ul className="divide-y divide-gray-200">
                       {activities.map((activity) => (
-                        <li key={activity.id} className="p-4 hover:bg-gray-700 animation-all duration-500 active:bg-lime-500">
+                        <li
+                          key={activity.id}
+                          className="animation-all p-4 duration-500 hover:bg-gray-700 active:bg-lime-500"
+                        >
                           <label className="flex cursor-pointer items-center">
                             <input
                               type="radio"
@@ -238,7 +241,7 @@ export default function StravaActivitySelector() {
                               value={activity.id}
                               checked={selectedActivity === String(activity.id)}
                               onChange={() => setSelectedActivity(String(activity.id))}
-                              className="h-4 w-4 text-lime-600 accent-lime-500 focus:ring-lime-50 hover:cursor-pointer"
+                              className="h-4 w-4 text-lime-600 accent-lime-500 hover:cursor-pointer focus:ring-lime-50"
                             />
                             <div className="ml-3">
                               <p className="text-sm font-medium text-gray-200">{activity.name}</p>
@@ -350,12 +353,12 @@ export default function StravaActivitySelector() {
               <img
                 src={resultImage}
                 alt=""
-                className="mx-auto max-h-96 max-w-full object-contain border"
+                className="mx-auto max-h-96 max-w-full border object-contain"
               />
             </div>
             <a
               ref={downloadRef}
-              className="inline-flex items-center rounded-md border border-transparent bg-lime-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-lime-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 hover:cursor-pointer"
+              className="inline-flex items-center rounded-md border border-transparent bg-lime-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:cursor-pointer hover:bg-lime-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
             >
               Download Image
             </a>
