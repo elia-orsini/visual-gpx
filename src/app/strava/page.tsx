@@ -1,6 +1,8 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
+import { allTemplates } from "@/constants/constants";
 
 export default function StravaActivitySelector() {
   const [activities, setActivities] = useState<any[]>([]);
@@ -8,6 +10,7 @@ export default function StravaActivitySelector() {
   const [error, setError] = useState<string | null>(null);
   const [selectedActivity, setSelectedActivity] = useState<string | null>(null);
   const [backgroundImage, setBackgroundImage] = useState<File | null>(null);
+  const [selectedTemplate, setSelectedTemplate] = useState<string>("template1");
   const [isConnected, setIsConnected] = useState(false);
   const [resultImage, setResultImage] = useState<string | null>(null);
   const downloadRef = useRef<HTMLAnchorElement>(null);
@@ -146,7 +149,9 @@ export default function StravaActivitySelector() {
       formData.append("activityId", selectedActivity);
       formData.append("image", backgroundImage);
 
-      const response = await fetch("/api/process-strava-gpx", {
+      const path = allTemplates[selectedTemplate];
+
+      const response = await fetch(path, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -217,22 +222,61 @@ export default function StravaActivitySelector() {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6">
+              <div>
+                <label className="mb-2 block text-base font-medium text-gray-200">
+                  Select Template
+                </label>
+                <div className="grid grid-cols-3 gap-x-2 sm:gap-x-8">
+                  <label className="relative aspect-[3/4] w-full cursor-pointer">
+                    <input
+                      onChange={() => setSelectedTemplate("template1")}
+                      type="radio"
+                      name="template"
+                      value="template1"
+                      className="peer hidden"
+                    />
+                    <div className="h-full w-full overflow-hidden rounded-lg border-2 border-transparent peer-checked:border-blue-500">
+                      <Image alt="GPX Track Template" src={"/gpx-track-0.png"} fill />
+                    </div>
+                    <div className="absolute inset-0 hidden items-center justify-center bg-black/50 peer-checked:flex">
+                      ✅
+                    </div>
+                  </label>
+
+                  <label className="relative aspect-[3/4] w-full cursor-pointer">
+                    <input
+                      onChange={() => setSelectedTemplate("template2")}
+                      type="radio"
+                      name="template"
+                      value="template2"
+                      className="peer hidden"
+                    />
+                    <div className="h-full w-full overflow-hidden rounded-lg border-2 border-transparent peer-checked:border-blue-500">
+                      <Image alt="Template 2" src={"/template2.png"} fill />
+                    </div>
+                    <div className="justify-center absolute inset-0 hidden items-center bg-black/50 peer-checked:flex">
+                      ✅
+                    </div>
+                  </label>
+                </div>
+              </div>
+
               {/* Activities List */}
               <div>
                 <label className="mb-2 block text-base font-medium text-gray-200">
                   Select Activity
                 </label>
-                <div className="max-h-96 overflow-y-auto rounded-lg bg-gray-800">
+                <div className="max-h-64 overflow-y-auto rounded-lg bg-gray-800">
                   {activities.length === 0 ? (
                     <div className="p-4 text-center text-gray-200">
                       {loading ? "Loading activities..." : "No activities found"}
                     </div>
                   ) : (
-                    <ul className="divide-y divide-gray-200">
+                    <ul className="divide-y divide-gray-600">
                       {activities.map((activity) => (
                         <li
                           key={activity.id}
-                          className="animation-all p-4 duration-500 hover:bg-gray-700 active:bg-lime-500"
+                          className="animation-all p-3 duration-500 hover:bg-gray-700 active:bg-lime-500"
                         >
                           <label className="flex cursor-pointer items-center">
                             <input
@@ -245,10 +289,18 @@ export default function StravaActivitySelector() {
                             />
                             <div className="ml-3">
                               <p className="text-sm font-medium text-gray-200">{activity.name}</p>
-                              <p className="text-xs text-gray-400">
-                                {new Date(activity.start_date).toLocaleString()} • {activity.type} •{" "}
-                                {(Math.floor(activity.distance / 10) / 100).toFixed(2)} km
-                              </p>
+                              <div className="flex flex-row gap-x-3 text-xs text-gray-400">
+                                <p>
+                                  {new Date(activity.start_date).toLocaleString("en-GB", {
+                                    weekday: undefined,
+                                    year: "numeric",
+                                    month: "numeric",
+                                    day: "numeric",
+                                  })}
+                                </p>
+                                <p>{activity.type}</p>
+                                <p>{(Math.floor(activity.distance / 10) / 100).toFixed(2)} km</p>
+                              </div>
                             </div>
                           </label>
                         </li>
@@ -309,6 +361,7 @@ export default function StravaActivitySelector() {
                 </div>
               )}
 
+              {/* Submit Button */}
               <button
                 type="submit"
                 disabled={loading || !selectedActivity || !backgroundImage}
@@ -346,6 +399,7 @@ export default function StravaActivitySelector() {
           )}
         </div>
 
+        {/* Image Result */}
         {resultImage && (
           <div className="mt-4 space-y-4">
             <h2 className="text-xl font-semibold text-gray-100">Result</h2>
