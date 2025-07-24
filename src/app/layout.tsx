@@ -6,7 +6,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Visual GPX",
   description: "Visual GPX",
-  icons: { icon: "/vercel.svg" },
+  icons: { icon: "/globe.svg" },
   openGraph: {
     title: "Visual GPX",
     description: "Visual GPX",
