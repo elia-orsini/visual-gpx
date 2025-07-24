@@ -175,6 +175,13 @@ export default function StravaActivitySelector() {
     }
   };
 
+  useEffect(() => {
+    if (downloadRef.current) {
+      downloadRef.current.href = resultImage || "";
+      downloadRef.current.download = "gpx-track.png";
+    }
+  }, [resultImage, downloadRef]);
+
   return (
     <div className="min-h-screen bg-gray-950">
       <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6 lg:px-8">
@@ -254,7 +261,7 @@ export default function StravaActivitySelector() {
                     <div className="h-full w-full overflow-hidden rounded-lg border-2 border-transparent peer-checked:border-blue-500">
                       <Image alt="Template 2" src={"/template2.png"} fill />
                     </div>
-                    <div className="justify-center absolute inset-0 hidden items-center bg-black/50 peer-checked:flex">
+                    <div className="absolute inset-0 hidden items-center justify-center bg-black/50 peer-checked:flex">
                       ✅
                     </div>
                   </label>
