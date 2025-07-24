@@ -42,7 +42,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
               </Link>
               <div className="flex items-center space-x-4">
                 <Link
-                  href="/upload"
+                  href="/strava"
                   className="rounded-md text-xs sm:text-base bg-gray-50 px-4 py-2 text-gray-700 hover:bg-lime-500 animation-all duration-500"
                 >
                   Get started
