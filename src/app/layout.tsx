@@ -63,7 +63,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                 <p className="text-sm text-gray-200">Transform your adventure into art</p>
               </div>
               <div className="flex space-x-6">
-                <Link href="#" className="text-sm text-gray-100 hover:text-gray-200">
+                {/* <Link href="#" className="text-sm text-gray-100 hover:text-gray-200">
                   About
                 </Link>
                 <Link href="#" className="text-sm text-gray-100 hover:text-gray-200">
@@ -71,7 +71,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                 </Link>
                 <Link href="#" className="text-sm text-gray-100 hover:text-gray-200">
                   Privacy
-                </Link>
+                </Link> */}
               </div>
             </div>
           </div>

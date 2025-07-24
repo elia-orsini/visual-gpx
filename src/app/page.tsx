@@ -44,7 +44,7 @@ export default async function IndexPage() {
             <h2 className="mb-4 text-3xl font-bold text-gray-50">
               Create Stunning Activity Visuals
             </h2>
-            <p className="mx-auto max-w-2xl text-xl text-gray-200">
+            <p className="mx-auto max-w-2xl text-xl text-gray-400">
               Multiple styles to showcase your adventures
             </p>
           </div>
@@ -59,7 +59,7 @@ export default async function IndexPage() {
               {
                 title: "Topographic Style",
                 description: "Elevation-aware with terrain contours",
-                style: "bg-gradient-to-br from-lime-50 to-green-100",
+                style: "bg-gradient-to-br from-lime-200 to-green-100",
               },
               {
                 title: "Night Mode",
@@ -83,15 +83,15 @@ export default async function IndexPage() {
             <h2 className="mb-4 text-3xl font-bold text-gray-50">
               Inspiration for Your Next Creation
             </h2>
-            <p className="mx-auto max-w-2xl text-xl text-gray-500">
+            <p className="mx-auto max-w-2xl text-xl text-gray-400">
               See what others have made with their activity data
             </p>
           </div>
 
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {[1, 2, 3].map((item) => (
-              <div key={item} className="overflow-hidden rounded-xl shadow-md">
-                <div className="relative aspect-[3/4] bg-gradient-to-tr from-gray-100 to-gray-300">
+              <div key={item} className="overflow-hidden border border-[0.5px] rounded-xl shadow-md">
+                <div className="relative aspect-[3/4]">
                   <Image alt="" src={imgs[item - 1]} fill objectFit="cover" />
                 </div>
                 <div className="bg-gray-100 p-4">
