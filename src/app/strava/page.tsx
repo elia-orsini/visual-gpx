@@ -124,9 +124,17 @@ export default function StravaActivitySelector() {
   };
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files?.[0]) {
-      setBackgroundImage(e.target.files[0]);
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const maxSize = 6 * 1024 * 1024;
+    if (file.size > maxSize) {
+      setError("File size must be under 6MB");
+      return;
     }
+
+    setBackgroundImage(file);
+    setError(null);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
